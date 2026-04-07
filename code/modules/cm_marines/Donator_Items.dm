@@ -326,25 +326,6 @@
 		WEAR_R_HAND = "marine_armor"
 	)
 
-/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
-
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
 	desc = "A uniform, of a famous Earth warrior... Donor Item."
@@ -552,25 +533,6 @@
 		WEAR_L_HAND = "marine_armor",
 		WEAR_R_HAND = "marine_armor"
 	)
-
-/obj/item/clothing/suit/storage/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
@@ -836,25 +798,6 @@
 		WEAR_R_HAND = "helmet"
 	)
 
-/obj/item/clothing/head/helmet/marine/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
-
 /obj/item/clothing/head/helmet/marine/fluff/officialjake
 	name = "Timothy's Beret"
 	desc = "A fancy red beret owned by Timothy Seidner.  DONOR ITEM"
@@ -1089,25 +1032,6 @@
 		WEAR_R_HAND = "helmet"
 	)
 
-/obj/item/clothing/head/helmet/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
-
 /obj/item/clothing/head/helmet/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Helmet"
 	desc = "Shockingly good helmet.  DONOR ITEM"
@@ -1264,25 +1188,6 @@
 		WEAR_L_HAND = "marine_jumpsuit",
 		WEAR_R_HAND = "marine_jumpsuit"
 	)
-
-/obj/item/clothing/under/marine/fluff/sas_elite/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/under/marine/fluff/leeeverett //CKEY=theflagbearer (UNIQUE)
 	name = "Rugged Outfit"
@@ -1663,25 +1568,6 @@
 		WEAR_L_HAND = "marinepack",
 		WEAR_R_HAND = "marinepack"
 	)
-
-/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"

@@ -29,6 +29,9 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/uniforms_righthand.dmi',
 	)
 
+	per_map_icon_source = "icons/obj/items/clothing/uniforms/uniforms_by_map"
+	per_map_body_icon_source = "icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map"
+
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT), override_icon_state[] = null)
@@ -44,25 +47,9 @@
 
 /obj/item/clothing/under/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
-	if(flags_atom & MAP_COLOR_INDEX)
-		return
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi'
-			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
-		if("urban")
-			icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
-			item_icons[WEAR_BODY] = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi'
+	// they holding me in basement
+	if(SSmapping.configs[GROUND_MAP].camouflage_type == "snow")
+		flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))

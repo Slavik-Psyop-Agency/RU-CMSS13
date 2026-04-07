@@ -473,6 +473,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	///Faction owners of the inbuilt camera
 	var/list/camera_factions = FACTION_LIST_MARINE_WY
 
+	per_map_icon_source = "icons/obj/items/clothing/hats/hats_by_map"
+	per_map_head_icon_source = "icons/mob/humans/onmob/clothing/head/hats_by_map"
+
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -520,27 +523,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
 			if(cycle_action)
 				cycle_action.set_action_overlay(active_visor)
-
-/obj/item/clothing/head/helmet/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	if(flags_atom & MAP_COLOR_INDEX)
-		return
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 /obj/item/clothing/head/helmet/marine/Destroy(force)
 	QDEL_NULL(camera)
@@ -1824,24 +1806,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
 
-/obj/item/clothing/head/helmet/specrag/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
+	per_map_icon_source = "icons/obj/items/clothing/hats/hats_by_map"
+	per_map_head_icon_source = "icons/mob/humans/onmob/clothing/head/hats_by_map"
 
 
 /obj/item/clothing/head/helmet/specrag/Initialize(mapload, ...)
@@ -1868,28 +1834,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
 
+	per_map_icon_source = "icons/obj/items/clothing/hats/hats_by_map"
+	per_map_head_icon_source = "icons/mob/humans/onmob/clothing/head/hats_by_map"
+
 /obj/item/clothing/head/helmet/skullcap/Initialize(mapload, ...)
 	. = ..()
 	select_gamemode_skin(type)
-
-/obj/item/clothing/head/helmet/skullcap/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/desert.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
-			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 
 /obj/item/clothing/head/helmet/skullcap/jungle

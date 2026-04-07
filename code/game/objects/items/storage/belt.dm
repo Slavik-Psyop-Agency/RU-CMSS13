@@ -263,24 +263,8 @@
 	)
 	flags_atom = FPRINT // has gamemode skin
 
-/obj/item/storage/belt/medical/lifesaver/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
+	per_map_icon_source = "icons/obj/items/clothing/belts/belts_by_map"
+	per_map_waist_icon_source = "icons/mob/humans/onmob/clothing/belts/belts_by_map"
 
 /obj/item/storage/belt/medical/lifesaver/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -739,24 +723,8 @@
 	)
 	flags_atom = FPRINT // has gamemode skin
 
-/obj/item/storage/belt/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
+	per_map_icon_source = "icons/obj/items/clothing/belts/belts_by_map"
+	per_map_waist_icon_source = "icons/mob/humans/onmob/clothing/belts/belts_by_map"
 
 /obj/item/storage/belt/marine/m41a/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1011,24 +979,8 @@
 	flap = FALSE
 	flags_atom = FPRINT // has gamemode skin
 
-/obj/item/storage/belt/shotgun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
+	per_map_icon_source = "icons/obj/items/clothing/belts/belts_by_map"
+	per_map_waist_icon_source = "icons/mob/humans/onmob/clothing/belts/belts_by_map"
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1198,24 +1150,8 @@
 
 	COOLDOWN_DECLARE(draw_cooldown)
 
-/obj/item/storage/belt/knifepouch/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
+	per_map_icon_source = "icons/obj/items/clothing/belts/belts_by_map"
+	per_map_waist_icon_source = "icons/mob/humans/onmob/clothing/belts/belts_by_map"
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -1350,7 +1286,8 @@
 	item_state = "marinebelt" //see post_skin_selection() - this is used for inhand states, the belt sprites use the same filename as the icon state.
 	icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/jungle.dmi',
 	)
 	use_sound = null
 	w_class = SIZE_LARGE
@@ -1385,29 +1322,9 @@
 		/obj/item/weapon/gun/pistol/skorpion, // HONKed currently
 	)
 
-/obj/item/storage/belt/gun/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/jungle.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
-			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/classic.dmi'
-			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/desert.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/desert.dmi'
-			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi'
-			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/belts/belts_by_map/urban.dmi'
-			item_icons[WEAR_WAIST] = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/urban.dmi'
-			item_icons[WEAR_J_STORE] = 'icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map/urban.dmi'
+	per_map_icon_source = "icons/obj/items/clothing/belts/belts_by_map"
+	per_map_waist_icon_source = "icons/mob/humans/onmob/clothing/belts/belts_by_map"
+	per_map_j_store_icon_source = "icons/mob/humans/onmob/clothing/suit_storage/suit_storage_by_map"
 
 /obj/item/storage/belt/gun/post_skin_selection()
 	base_icon = icon_state

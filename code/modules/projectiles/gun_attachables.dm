@@ -564,7 +564,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/extended_barrel/vented/New()
 	..()
@@ -661,7 +660,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/compensator/m10/spiked
 	name = "M10 extended spiked recoil compensator"
@@ -1134,7 +1132,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/alt_iff_scope
 	name = "B8 Smart-Scope"
@@ -1537,7 +1534,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/vulture_scope/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -2086,54 +2082,18 @@ Defined in conflicts.dm of the #defines folder.
 	gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/synth/collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	var/new_icon_state
-	if(stock_activated)
-		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-			if("jungle")
-				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon) + "_on"
-				icon_state = new_icon_state ? new_icon_state : initial(icon_state) + "_on"
-				. = TRUE
-			if("snow")
-				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon) + "_on"
-				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state) + "_on"
-				. = TRUE
-			if("desert")
-				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon) + "_on"
-				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state) + "_on"
-				. = TRUE
-			if("classic")
-				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon) + "_on"
-				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state) + "_on"
-				. = TRUE
-			if("urban")
-				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon) + "_on"
-				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state) + "_on"
-				. = TRUE
-	else
-		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-			if("jungle")
-				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon)
-				icon_state = new_icon_state ? new_icon_state : initial(icon_state)
-				. = TRUE
-			if("snow")
-				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon)
-				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state)
-				. = TRUE
-			if("desert")
-				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon)
-				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state)
-				. = TRUE
-			if("classic")
-				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon)
-				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state)
-				. = TRUE
-			if("urban")
-				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon)
-				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state)
-				. = TRUE
-	return .
+	. = ..()
+	// Help me
+	var/prefix = ""
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("classic") prefix = "c_"
+		if("desert") prefix = "d_"
+		if("snow") prefix = "s_"
+		if("urban") prefix = "u_"
+
+	var/suffix = stock_activated ? "_on" : ""
+	attach_icon = "[prefix][initial(attach_icon)][suffix]"
+	icon_state = "[prefix][initial(icon_state)][suffix]"
 
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"
@@ -2296,7 +2256,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/stock/xm88
 	name = "\improper XM88 padded stock"
@@ -2657,7 +2616,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/stock/mod88
 	AUTOWIKI_SKIP(TRUE)
@@ -4154,7 +4112,6 @@ Defined in conflicts.dm of the #defines folder.
 		if("urban")
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
-	return .
 
 /obj/item/attachable/bipod/vulture/bipod/New()
 	..()
@@ -4178,27 +4135,17 @@ Defined in conflicts.dm of the #defines folder.
 	update_icon()
 
 /obj/item/attachable/bipod/m41ae2/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	var/new_icon_state
+	. = ..()
+	// I just want
+	var/prefix = ""
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-			. = TRUE
-		if("desert")
-			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-			. = TRUE
-		if("classic")
-			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-			. = TRUE
-		if("urban")
-			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
-			icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
-			. = TRUE
-	return .
+		if("classic") prefix = "c_"
+		if("desert") prefix = "d_"
+		if("snow") prefix = "s_"
+		if("urban") prefix = "u_"
+
+	attach_icon = "[prefix][initial(attach_icon)]"
+	icon_state = "[prefix][initial(icon_state)]"
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

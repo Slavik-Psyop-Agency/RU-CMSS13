@@ -238,6 +238,42 @@
 	return
 
 /**
+ * Reasoning behind why I don't want to use list - ONE MORE LIST = ONE LESS TILE.
+ * This can be accounted only for really big in meaning of list consuming entities.
+ * In this case I can use only one list, and spare another one for smth else!
+ * By this way also we can do a lot of QOL for devs
+ */
+/obj/item
+	///#NOHARDCODE Allows you to set custom paths !!REMEMBER, YOU HAVE TO CACHE THEM ON COMPILE TIME TO WORK!!
+	var/per_map_icon_source = null
+	///#NOHARDCODE
+	var/per_map_waist_icon_source = null
+	///#NOHARDCODE
+	var/per_map_j_store_icon_source = null
+	///#NOHARDCODE
+	var/per_map_back_icon_source = null
+	///#NOHARDCODE
+	var/per_map_head_icon_source = null
+	///#NOHARDCODE
+	var/per_map_body_icon_source = null
+	///#NOHARDCODE
+	var/per_map_jacket_icon_source = null
+	///#NOHARDCODE
+	var/per_map_as_grab_icon_source = null
+	///#NOHARDCODE
+	var/per_map_inhands_icon_source = "icons/mob/humans/onmob/inhands/items_by_map"
+	var/per_map_inhands_icon_custom_name = ""
+
+	///#NOHARDCODE Allows you to set custom files !!REMEMBER, YOU HAVE TO CACHE THEM ON COMPILE TIME TO WORK!!
+	var/list/active_per_map_mappings = list(
+		"jungle",
+		"classic",
+		"desert",
+		"snow",
+		"urban",
+	)
+
+/**
  * Global item proc for all of your unique item skin needs. Works with any
  * item, and will change the skin to whatever you specify here. You can also
  * manually override the icon with a unique skin if wanted, for the outlier
@@ -249,54 +285,84 @@
 /obj/item/proc/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(type != expected_type)
 		return FALSE
+
 	if(flags_atom & NO_GAMEMODE_SKIN)
 		return FALSE
 
 	var/new_icon_state
 	var/new_protection
-	var/new_item_state
 	if(LAZYLEN(override_icon_state))
 		new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 	if(LAZYLEN(override_protection))
 		new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
-	if(!isnull(icon_state) || new_icon_state || new_item_state)
+	if(!isnull(icon_state) || new_icon_state)
 		if(flags_atom & MAP_COLOR_INDEX)
+			var/prefix = ""
 			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 				if("snow")
-					icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
-					item_state = new_item_state ? new_item_state : "s_" + item_state
+					prefix = "s_"
 				if("desert")
-					icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
-					item_state = new_item_state ? new_item_state : "d_" + item_state
+					prefix = "s_"
 				if("classic")
-					icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
-					item_state = new_item_state ? new_item_state : "c_" + item_state
+					prefix = "s_"
 				if("urban")
-					icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
-					item_state = new_item_state ? new_item_state : "u_" + item_state
+					prefix = "u_"
+			icon_state = new_icon_state ? new_icon_state : prefix + icon_state
+			item_state = prefix + item_state
 		if(new_protection)
 			min_cold_protection_temperature = new_protection
-		else
-			if(!item_icons)
-				item_icons = list()
-			switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-				if("jungle")
-					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
-					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
-				if("snow")
-					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
-					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
-				if("desert")
-					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
-					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
-				if("classic")
-					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
-					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
-				if("urban")
-					item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
-					item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
-	return TRUE
+		if(!item_icons)
+			item_icons = list()
+
+	. = TRUE
+
+	// I assume if we didn't loaded it, so we don't need it. Yeah very glim shot, however best hopes for that. I don't want to mess deeper into the shitcode dimension.
+	if(!item_icons || flags_atom & NO_GAMEMODE_SKIN)
+		return
+
+	var/map_camouflage_type = SSmapping.configs[GROUND_MAP].camouflage_type
+	if(!map_camouflage_type)
+		return
+
+	var/cache_icon = icon
+	if(per_map_waist_icon_source)
+		icon = icon("[per_map_waist_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_WAIST] = icon
+
+	if(per_map_j_store_icon_source)
+		icon = icon("[per_map_j_store_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_J_STORE] = icon
+
+	if(per_map_back_icon_source)
+		icon = icon("[per_map_back_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_BACK] = icon
+
+	if(per_map_head_icon_source)
+		icon = icon("[per_map_head_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_HEAD] = icon
+
+	if(per_map_jacket_icon_source)
+		icon = icon("[per_map_jacket_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_JACKET] = icon
+
+	if(per_map_body_icon_source)
+		icon = icon("[per_map_body_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_BODY] = icon
+
+	if(per_map_as_grab_icon_source)
+		icon = icon("[per_map_as_grab_icon_source]/[map_camouflage_type].dmi")
+		item_icons[WEAR_AS_GARB] = icon
+
+	if(per_map_inhands_icon_source)
+		icon = icon("[per_map_inhands_icon_source]/[map_camouflage_type][per_map_inhands_icon_custom_name]_lefthand.dmi")
+		item_icons[WEAR_L_HAND] = icon
+		icon = icon("[per_map_inhands_icon_source]/[map_camouflage_type][per_map_inhands_icon_custom_name]_righthand.dmi")
+		item_icons[WEAR_R_HAND] = icon
+
+	icon = cache_icon
+	if(per_map_icon_source)
+		icon = icon("[per_map_icon_source]/[map_camouflage_type].dmi")
 
 /obj/item/get_examine_text(mob/user)
 	. = list()

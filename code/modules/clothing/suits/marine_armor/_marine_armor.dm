@@ -113,6 +113,9 @@
 
 	var/atom/movable/marine_light/light_holder
 
+	per_map_icon_source = "icons/obj/items/clothing/suits/suits_by_map"
+	per_map_jacket_icon_source = "icons/mob/humans/onmob/clothing/suits/suits_by_map"
+
 /obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
@@ -158,27 +161,6 @@
 		armor_overlays["lamp"] = null
 	if(user)
 		user.update_inv_wear_suit()
-
-/obj/item/clothing/suit/storage/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	if(flags_atom & MAP_COLOR_INDEX)
-		return
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
 
 /obj/item/clothing/suit/storage/marine/post_vendor_spawn_hook(mob/living/carbon/human/user) //used for randomizing/selecting a variant for armors.
 	if(!armor_variation)

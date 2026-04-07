@@ -344,29 +344,13 @@
 	pixel_x = -6
 	hud_offset = -6
 
+	per_map_inhands_icon_source = "icons/obj/items/weapons/guns/guns_by_map"
+	per_map_inhands_icon_custom_name = "/guns_x64"
+
 /obj/item/weapon/gun/rifle/sniper/M42A/Initialize(mapload, spawn_empty)
 	. = ..()
 	select_gamemode_skin()
 	AddElement(/datum/element/corp_label/armat)
-
-/obj/item/weapon/gun/rifle/sniper/M42A/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_lefthand_x64.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/jungle/guns_righthand_x64.dmi'
-		if("classic")
-			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_lefthand_x64.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_righthand_x64.dmi'
-		if("desert")
-			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_lefthand_x64.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_righthand_x64.dmi'
-		if("snow")
-			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand_x64.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand_x64.dmi'
-		if("urban")
-			item_icons[WEAR_L_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_lefthand_x64.dmi'
-			item_icons[WEAR_R_HAND] = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_righthand_x64.dmi'
 
 /obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
 	set name = "Toggle Scope Zoom Level"

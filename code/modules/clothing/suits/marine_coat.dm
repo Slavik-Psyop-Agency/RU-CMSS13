@@ -48,6 +48,9 @@
 	var/buttoned = TRUE
 	var/initial_icon_state
 
+	per_map_icon_source = "icons/obj/items/clothing/suits/suits_by_map"
+	per_map_jacket_icon_source = "icons/mob/humans/onmob/clothing/suits/suits_by_map"
+
 /obj/item/clothing/suit/storage/jacket/marine/proc/toggle()
 	set name = "Toggle Buttons"
 	set category = "Object"
@@ -74,25 +77,6 @@
 		initial_icon_state = icon_state
 	if(has_buttons)
 		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle
-
-/obj/item/clothing/suit/storage/jacket/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
 
 //Marine service & tanker jacket + MP themed variants
 /obj/item/clothing/suit/storage/jacket/marine/service
